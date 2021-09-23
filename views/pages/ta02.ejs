@@ -12,6 +12,26 @@
         <h1>
           <%= title %>
         </h1>
+        <% if (path === '/ta02/addUser') { %>
+        <form class="product-form" action="/ta02/addUser" method="POST">
+        <% } else if (path === '/ta02/deleteUser') { %>
+        <form class="product-form" action="/ta02/deleteUser" method="POST">
+        <% } %>
+          <div class="form-control">
+              <label for="fName">First Name</label>
+              <input type="text" name="fName" id="fName">
+              <label for="lName">Last Name</label>
+              <input type="text" name="lName" id="lName">
+              <label for="position">Position</label>
+              <input type="text" name="position" id="position">
+              <label for="status">Status</label>
+              <input type="text" name="status" id="status">
+              <label for="age">Age</label>
+              <input type="number" name="age" id="age" min="0">
+          </div>
+
+          <button class="btn" type="submit">Add User</button>
+        </form>
         <p>This is the placeholder for Team Activity 02</p>
       </div>
     </div>
