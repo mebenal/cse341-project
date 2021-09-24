@@ -15,7 +15,7 @@ let users = [
     },
     {
         fName: 'Abraham',
-        lName: 'Lincon',
+        lName: 'Lincoln',
         position: 'president',
         status: 'dead',
         age: 150

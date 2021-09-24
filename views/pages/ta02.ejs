@@ -2,41 +2,69 @@
 <html>
 
 <head>
-  <% include ../includes/header.ejs %>
+  <%- include("../includes/header.ejs")  %>
+  <link rel="stylesheet" href="/stylesheets/ta02.css">
 </head>
 
 <body>
-  <% include ../includes/nav.ejs %>
+  <%- include("../includes/nav.ejs") %>
     <div class="jumbotron text-center">
       <div class="container">
         <h1>
           <%= title %>
         </h1>
-        <% if (path === '/ta02/addUser') { %>
-        <form class="product-form" action="/ta02/addUser" method="POST">
-        <% } else if (path === '/ta02/deleteUser') { %>
-        <form class="product-form" action="/ta02/deleteUser" method="POST">
-        <% } %>
-          <div class="form-control">
-              <label for="fName">First Name</label>
-              <input type="text" name="fName" id="fName">
-              <label for="lName">Last Name</label>
-              <input type="text" name="lName" id="lName">
-              <label for="position">Position</label>
-              <input type="text" name="position" id="position">
-              <label for="status">Status</label>
-              <input type="text" name="status" id="status">
-              <label for="age">Age</label>
-              <input type="number" name="age" id="age" min="0">
-          </div>
-
-          <button class="btn" type="submit">Add User</button>
-        </form>
-        <p>This is the placeholder for Team Activity 02</p>
       </div>
     </div>
     <div class="container">
-
+      <% if (path !== "/ta02") { %>
+        <% if (path === '/ta02/addUser') { %>
+        <form class="user-form" action="/ta02/addUser" method="POST">
+        <% } else if (path === '/ta02/deleteUser') { %>
+        <form class="user-form" action="/ta02/deleteUser" method="POST">
+        <% } %>
+          <div class="form-control">
+            <div>
+              <label for="fName">First Name</label>
+              <input type="text" name="fName" id="fName">
+            </div>
+            <div> 
+              <label for="lName">Last Name</label>
+              <input type="text" name="lName" id="lName">
+            </div>
+            <div> 
+              <label for="position">Position</label>
+              <input type="text" name="position" id="position">
+            </div>
+            <div>   
+              <label for="status">Status</label>
+              <input type="text" name="status" id="status">
+            </div>
+            <div> 
+              <label for="age">Age</label>
+              <input type="number" name="age" id="age" min="0">
+            </div>
+            
+            <button class="btn" type="submit"><% if (path === "/ta02/addUser") { %>Add User<% } else if (path === "/ta02/deleteUser") { %>Delete User<% } %></button>
+          </div>
+        </form>
+      <% } else if ( users.length > 0 ) { %>
+        <div class="grid">
+          <% for (let user of users) { %>
+            <article class="card user">
+              <header class="card__header">
+                <h1 class="user__name"><%= `${user.fName} ${user.lName}` %></h1>
+              </header>
+              <div class="card__content">
+                <p class="user__position">Position: <%= user.position %></p>
+                <p class="user__status">Status: <%= user.status %></p>
+                <p class="user__age">Age: <%= user.age %></p>
+              </div>
+            </article>
+          <% } %>
+        </div>
+        <% } else { %>
+          <h1>No users Found</h1>
+        <% } %>
     </div>
 
 
