@@ -56,7 +56,6 @@
   display: inline;
 }
 
-
 .dropdown-menu>li>span>a {
   display: block;
   padding: 3px 20px;
@@ -65,4 +64,28 @@
   line-height: 1.42857143;
   color: #333;
   white-space: nowrap;
+}
+
+input {
+  color: black;
+}
+
+.btn {
+  color: black;
+  background-color: white;
+}
+
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  background-color: blue;
+}
+
+.grid {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr 1fr;
+}
+
+img {
+  width: 100%;
 }
